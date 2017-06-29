@@ -1,0 +1,99 @@
+<!doctype html>
+<html >
+	<head>
+		<!--声明当前页面的编码格式 UTF-8（国际编码）gbk(中文简体)-->
+		<meta charset="utf-8"/>
+		<!--声明当前页面的三要素-->
+		<title>全屏抽奖游戏</title>
+		<meta name="Keywords" content="关键字">
+		<meta name="Description" content="描述">
+		 <!--样式 css -->
+		 <style type="">
+			*{margin:0; padding:0;}
+			body{font-size:12px; font-family:"微软雅黑"; color:#666; background:url("images/repeat.jpg") no-repeat 50%;}
+			.activitys{width:1000px; height:916px; margin:0px auto; background:url("images/bg1.jpg") no-repeat; position:relative; }
+			.activitys .btn{position:absolute; top:310px; left:310px; width:400px; height:100px; background:rgba(0,0,0,0.4);}
+			.activitys #myGame{width:810px; height:400px; position:absolute; top:440px; left:100px;text-align:center; line-height:200px; }
+			.activitys #myGame ul li{list-style:none; position:relative; width:165px; height:166px; float:left; margin:0 48px 42px 0; text-align:center;transition:all 2s; }
+			.activitys #myGame ul li:nth-child(4n){margin-right:0px;}
+			.activitys #myGame ul li .a_img{position:absolute; top:0; width:157px; height:160px; border-radius:50%; background:#E2D084;}
+			.activitys #myGame ul li span{position:absolute; width:157px; height:15px; bottom:36px;left:0px; font-size:14px; color:#6C4F01; line-height:15px;}
+			.activitys #myGame ul li  p{position:absolute; width:157px; height:32px; bottom:0px; left:0px; font-size:18px; color:#DF8102; line-height:32px;}
+			 /* 摇一摇的时候样式*/
+			.activitys #myGame ul li.opa{transform:scale(1.4);}
+			.activitys #myGame ul li.opa .a_img{box-shadow:0px 0px 15px #000;}
+		 </style>
+	 </head>
+ <body>
+		<div class="activitys">
+			<a class="btn" id="play" href="#myGame"></a>
+			<div id="myGame">
+				<ul>	
+					<li class="opa">
+						<div class="a_img"><img src="images/tp_1.png"/></div>
+						<span>价值：￥4188</span>
+						<p>Apple&nbsp;&nbsp;Watch</p>
+					</li>
+					<li>
+						<div class="a_img"><img src="images/tp_2.png"/></div>
+						<span>价值：￥3199</span>
+						<p>沙巴5日自由行</p>
+					</li>
+					<li>
+						<div class="a_img"><img src="images/tp_3.png"/></div>
+						<span>价值：￥41</span>
+						<p>QQ萌羊公仔</p>
+					</li>
+					<li>
+						<div class="a_img"><img src="images/tp_4.png"/></div>
+						<span>价值：￥45</span>
+						<p>乐扣乐扣水杯</p>
+					</li>
+					<li>
+						<div class="a_img"><img src="images/tp_5.png"/></div>
+						<span>价值:￥30</span>
+						<p>30元绿钻现金券</p>
+					</li>
+					<li>
+						<div class="a_img"><img src="images/tp_6.png"/></div>
+						<span>价值:￥5</span>
+						<p>5元红包</p>
+					</li>
+					<li>
+						<div class="a_img"><img src="images/tp_7.png"/></div>
+						<span>价值:￥18</span>
+						<p>18Q币</p>
+					</li>
+					<li>
+						<div class="a_img"><img src="images/tp_8.png"/></div>
+						<span>价值:￥10</span>
+						<p>1个月绿钻</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="js/jquery-2.1.3.min.js"> </script>
+		<script> 
+			var i = 0; 
+			var c = 0;
+			
+			function game(){
+			 if(i>7){i=0;}
+			 $("#myGame ul li").eq(i).addClass("opa").siblings().removeClass("opa");
+			 i++;
+			}
+			$("#play").click(function(){
+				if(c==0){
+					time = setInterval("game()",50);
+					//以 50ms 的时间为一周期，实现 game  无限制
+
+					c++;
+				}else{
+					//第二次点击的时候 出现 我们需要的效果
+					clearInterval(time);
+					c=0;
+				}
+			});
+		</script>
+ </body>
+</html>
